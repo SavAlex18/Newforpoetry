@@ -25,6 +25,8 @@ lint = [
 python_version = "3.14"
 warn_return_any = true
 exclude = "venv"
+mypy_path = "src"
+explicit_package_bases = true
 
 [tool.black]
 line-length = 119

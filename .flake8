@@ -3,3 +3,4 @@ max-line-length=119
 exclude=.git, .venv
 show-source = True
 count = True
+extend-ignore = E203,E701
