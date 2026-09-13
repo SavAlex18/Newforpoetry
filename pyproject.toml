@@ -25,8 +25,10 @@ lint = [
 python_version = "3.14"
 warn_return_any = true
 exclude = "venv"
+# By qwen
 mypy_path = "src"
 explicit_package_bases = true
+# /By qwen
 
 [tool.black]
 line-length = 119
