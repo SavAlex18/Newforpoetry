@@ -16,7 +16,8 @@ def get_mask_card_number(card_number: str) -> str | None:
 
 
 def get_mask_account(account_number: str) -> str | None:
+    """Маскирует счёт клиента оставляя последние 4 цифры"""
     if len(account_number) < 4:
         return None
-    """Маскирует счёт клиента оставляя последние 4 цифры"""
+
     return 2 * "*" + account_number[-4:]
