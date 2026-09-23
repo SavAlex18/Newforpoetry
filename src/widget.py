@@ -4,7 +4,10 @@ import masks
 
 
 def mask_account_card(info_client: str) -> str | None:
-    """Функция возвращает замаскированный номер или счёт в зависимости от входного параметра"""
+    """
+    Функция получает на входе строку с номером карты или счёта,
+    возвращает замаскированный номер или счёт в зависимости от входного параметра
+    """
     info_card_account = info_client.split(" ")
     if info_card_account[0].upper() in ["СЧЕТ", "СЧЁТ"]:
         mask_account = masks.get_mask_account(info_card_account[-1])
@@ -22,5 +25,8 @@ def mask_account_card(info_client: str) -> str | None:
 
 
 def get_date(input_datetime: str) -> str:
-    """Функция возвращает 'немецкий' формат даты в виде дд.мм.гггг из ISO формата"""
+    """
+    Функция получает на входе строку формата ISO 8601
+    а возвращает 'немецкий' формат даты в виде дд.мм.гггг из ISO 8601 формата
+    """
     return datetime.datetime.fromisoformat(input_datetime).strftime("%d.%m.%Y")
