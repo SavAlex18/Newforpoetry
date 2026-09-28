@@ -1,6 +1,7 @@
 import datetime
 
-import masks
+# import masks
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(info_client: str) -> str | None:
@@ -10,14 +11,14 @@ def mask_account_card(info_client: str) -> str | None:
     """
     info_card_account = info_client.split(" ")
     if info_card_account[0].upper() in ["СЧЕТ", "СЧЁТ"]:
-        mask_account = masks.get_mask_account(info_card_account[-1])
+        mask_account = get_mask_account(info_card_account[-1])
         if mask_account:
             return "Счет " + mask_account
             # return str("Счет " + masks.get_mask_account(info_card_account[-1]))
         else:
             return None
     else:
-        mask_card_number = masks.get_mask_card_number(info_card_account[-1])
+        mask_card_number = get_mask_card_number(info_card_account[-1])
         if mask_card_number:
             return str((" ".join(info_card_account[0 : len(info_card_account) - 1]) + " " + mask_card_number))
         else:
