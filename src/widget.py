@@ -25,9 +25,16 @@ def mask_account_card(info_client: str) -> str | None:
             return None
 
 
-def get_date(input_datetime: str) -> str:
+def get_date(input_datetime: str) -> str | None:
     """
     Функция получает на входе строку формата ISO 8601
     а возвращает 'немецкий' формат даты в виде дд.мм.гггг из ISO 8601 формата
+    None  в случае невалидной входящей строки
     """
-    return datetime.datetime.fromisoformat(input_datetime).strftime("%d.%m.%Y")
+    try:
+        return datetime.datetime.fromisoformat(input_datetime).strftime("%d.%m.%Y")
+    except ValueError:
+        return None
+
+
+print(get_date("2024-12-12T12:12:12"))
