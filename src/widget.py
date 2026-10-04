@@ -1,6 +1,7 @@
 import datetime
 
-import masks
+# import masks
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(info_client: str) -> str | None:
@@ -10,23 +11,30 @@ def mask_account_card(info_client: str) -> str | None:
     """
     info_card_account = info_client.split(" ")
     if info_card_account[0].upper() in ["СЧЕТ", "СЧЁТ"]:
-        mask_account = masks.get_mask_account(info_card_account[-1])
+        mask_account = get_mask_account(info_card_account[-1])
         if mask_account:
             return "Счет " + mask_account
             # return str("Счет " + masks.get_mask_account(info_card_account[-1]))
         else:
             return None
     else:
-        mask_card_number = masks.get_mask_card_number(info_card_account[-1])
+        mask_card_number = get_mask_card_number(info_card_account[-1])
         if mask_card_number:
             return str((" ".join(info_card_account[0 : len(info_card_account) - 1]) + " " + mask_card_number))
         else:
             return None
 
 
-def get_date(input_datetime: str) -> str:
+def get_date(input_datetime: str) -> str | None:
     """
     Функция получает на входе строку формата ISO 8601
     а возвращает 'немецкий' формат даты в виде дд.мм.гггг из ISO 8601 формата
+    None  в случае невалидной входящей строки
     """
-    return datetime.datetime.fromisoformat(input_datetime).strftime("%d.%m.%Y")
+    try:
+        return datetime.datetime.fromisoformat(input_datetime).strftime("%d.%m.%Y")
+    except ValueError:
+        return None
+
+
+print(get_date("2024-12-12T12:12:12"))
