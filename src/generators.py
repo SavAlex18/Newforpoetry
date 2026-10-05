@@ -30,12 +30,16 @@ def transaction_descriptions(list_transactions: list) -> Iterator[str]:  # Itera
         yield trans.get("description")
 
 
-def card_number_generator(start_number: int, end_number: int) -> Iterator[str] :
+def card_number_generator(start_number: int, end_number: int) -> Iterator[str]:
     """
     выдает номера банковских карт в формате
     XXXX XXXX XXXX XXXX, где X — цифра номера карты
+    Args:
+        start_number: int
+        end_number: int
+    Yields:
+        Iterator[str]: [description]
     """
-
     for number in range(start_number, end_number + 1):
         str_num = ("0" * 16 + str(number))[-16:]
         numb = [str_num[i : i + 4] for i in range(0, len(str_num), 4)]
