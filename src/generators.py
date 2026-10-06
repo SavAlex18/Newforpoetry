@@ -13,7 +13,7 @@ def filter_by_currency(list_transactions: list, currency: str) -> Iterator[dict[
         Iterator[dict[str, any]]: [description]
     """
     for trans in list_transactions:
-        if trans.get("operationAmount", {}).get("currency", {}).get("name") == currency:
+        if trans.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency:
             yield trans
 
 
