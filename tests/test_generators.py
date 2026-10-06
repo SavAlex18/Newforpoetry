@@ -1,5 +1,3 @@
-import pytest
-
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 transactions = (
@@ -161,4 +159,3 @@ def test_transaction_descriptions_fix(param_description):
     assert next(desc_gen, None) == param_description[3]
     assert next(desc_gen, None) == param_description[4]
     assert next(desc_gen, None) is None
-
