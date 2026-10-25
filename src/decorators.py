@@ -2,7 +2,8 @@ import functools
 
 
 def log(filename=""):
-    '''Декоратор должен автоматически логировать начало и конец выполнения функции'''
+    """Декоратор должен автоматически логировать начало и конец выполнения функции"""
+
     def log_decorator(func):
         @functools.wraps(func)
         def wrappers(*args, **kwargs):
@@ -27,15 +28,3 @@ def log(filename=""):
         return wrappers
 
     return log_decorator
-
-
-if "__main__" == __name__:
-
-    filename = "test.log"
-    filename = ""
-
-    @log(filename)
-    def sss(a: int, b: int) -> int:
-        return a / b
-
-    print(sss(3, 0))
