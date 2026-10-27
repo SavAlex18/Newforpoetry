@@ -1,6 +1,13 @@
 import json
 from pathlib import Path
+import logging
 
+logger = logging.getLogger('utils')
+file_handler = logging.FileHandler('logs/utils.log')
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 def get_operations(local_json_path: str) -> list:
     """
@@ -10,11 +17,15 @@ def get_operations(local_json_path: str) -> list:
     """
     operations = []
     filename = Path(local_json_path)
+    logger.info(f'В utils передано имя файла: {filename}')
     if not filename.is_file():
+        logger.info(f'{filename} не является правильным именем файла, возможно, папка, выход из utils')
         return operations
     try:
         with open(local_json_path, encoding="utf-8") as json_file:
             operations = json.load(json_file)
+            logger.info(f'Файл {filename} прочитан')
             return operations
-    except (FileNotFoundError, json.decoder.JSONDecodeError, OSError):
+    except (FileNotFoundError, json.decoder.JSONDecodeError, OSError) as ex:
+        logger.debug(f'При попытке чтения {filename} как json файл, возникло исключение {ex}')
         return operations
