@@ -35,7 +35,7 @@ result_dict = {
     "result": 1.120234
 }
 
-
+@patch('requests.request')
 def test_convert_to_rub():
     mock_request = Mock()
     requests.request = mock_request

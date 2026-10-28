@@ -12,7 +12,6 @@ def mask_account_card(info_client: str) -> str | None:
         mask_account = get_mask_account(info_card_account[-1])
         if mask_account:
             return "Счет " + mask_account
-            # return str("Счет " + masks.get_mask_account(info_card_account[-1]))
         else:
             return None
     else:
