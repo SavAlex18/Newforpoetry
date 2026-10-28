@@ -2,6 +2,7 @@ import json
 import logging
 from pathlib import Path
 
+Path('logs').mkdir(exist_ok=True)
 
 logger = logging.getLogger('utils')
 file_handler = logging.FileHandler('logs/utils.log', mode='w')

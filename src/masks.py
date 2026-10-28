@@ -1,5 +1,7 @@
 import logging
+from pathlib import Path
 
+Path('logs').mkdir(exist_ok=True)
 logger = logging.getLogger('masks')
 file_handler = logging.FileHandler('logs/masks.log', mode='w')
 file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
