@@ -40,21 +40,3 @@ if __name__ == "__main__":
         "to": "Счет 35383033474447895560",
     }
     print(convert_to_rub(trans_dict))
-#     amount = trans_dict.get("operationAmount", None).get("amount", None)
-#     code = trans_dict.get("operationAmount", None).get("currency", None).get("code", None)
-#     result_dict = {
-#     "success": True,
-#     "query": {
-#         "from": "EUR",
-#         "to": "USD",
-#         "amount": 1
-#         },
-#     "info": {
-#         "timestamp": 1792819445,
-#         "rate": 1.120234
-#     },
-#     "date": "2026-10-24",
-#     "result": 1.120234
-# }
-
-#   https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=EUR&amount=1
