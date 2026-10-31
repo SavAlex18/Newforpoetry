@@ -1,7 +1,4 @@
-# import json
-from unittest.mock import Mock, patch
-
-import requests
+from unittest.mock import patch
 
 from src.external_api import convert_to_rub
 
@@ -24,9 +21,7 @@ result_dict = {
 
 
 @patch("requests.request")
-def test_convert_to_rub():
-    mock_request = Mock()
-    requests.request = mock_request
+def test_convert_to_rub(mock_request):
     mock_request.return_value.status_code = 200
     mock_request.return_value.json.return_value = result_dict
     assert convert_to_rub(trans_dict) == 1.120234

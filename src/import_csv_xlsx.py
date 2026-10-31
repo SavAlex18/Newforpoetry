@@ -12,14 +12,14 @@ def get_transactions_csv(csv_path: str) -> list[dict]:
     :return:[dict]
     """
     list_transactions = []
-    if os.path.isfile(csv_path):
-        try:
-            with open(csv_path, "r", encoding="utf-8") as csvfile:
-                list_transactions = list(csv.DictReader(csvfile))
-                return list_transactions
-        except csv.Error:
-            return list_transactions
-    else:
+    if not os.path.isfile(csv_path):
+        return list_transactions
+
+    try:
+        df = pd.read_csv(csv_path)
+        list_transactions = df.to_dict(orient='records')
+        return list_transactions
+    except Exception:
         return list_transactions
 
 
