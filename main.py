@@ -1,8 +1,8 @@
-from src.import_csv_xlsx import get_transactions_csv, get_transactions_xlsx
-from src.utils import get_operations
-from src.processing import filter_by_state, sort_by_date
 from src.get_operations import process_bank_search
-from src.widget import mask_account_card, get_date
+from src.import_csv_xlsx import get_transactions_csv, get_transactions_xlsx
+from src.processing import filter_by_state, sort_by_date
+from src.utils import get_operations
+from src.widget import get_date, mask_account_card
 
 statuses = ("EXECUTED", "CANCELED", "PENDING")
 category_list = ['Открытие вклада', 'Перевод организации', 'Перевод с карты на карту', 'Перевод со счета на счет']
