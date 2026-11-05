@@ -1,4 +1,4 @@
-import csv
+
 import os
 
 import pandas as pd
@@ -16,7 +16,7 @@ def get_transactions_csv(csv_path: str) -> list[dict]:
         return list_transactions
 
     try:
-        df = pd.read_csv(csv_path)
+        df = pd.read_csv(csv_path, sep=';')
         list_transactions = df.to_dict(orient='records')
         return list_transactions
     except Exception:
