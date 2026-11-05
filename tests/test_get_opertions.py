@@ -14,15 +14,20 @@ data_no_desc = [
     {"id": "2", "desc": "Оплата в ГБ"},
 ]
 
-category_list = ["Перевод недругу", "Перевод другу", "Оплата в ГБ", ]
+category_list = [
+    "Перевод недругу",
+    "Перевод другу",
+    "Оплата в ГБ",
+]
 
 
 def test_process_bank_search_found():
     result = process_bank_search(data, "Перевод")
-    assert result == [{"id": "1", "description": "Перевод другу"},
-                      {"id": "2", "description": "Перевод недругу"},
-                      {"id": "4", "description": "Перевод недругу"},
-                      ]
+    assert result == [
+        {"id": "1", "description": "Перевод другу"},
+        {"id": "2", "description": "Перевод недругу"},
+        {"id": "4", "description": "Перевод недругу"},
+    ]
 
 
 def test_process_bank_search_notfound():

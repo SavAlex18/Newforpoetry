@@ -26,10 +26,10 @@ def test_get_transactions_xlsx_exception(mock_read_excel, mock_isfile):
 
 @patch("os.path.isfile", return_value=True)
 @patch("pandas.read_csv", side_effect=Exception("Ошибка чтения csv"))
-def test_get_transactions_csv_exception(mock_read_csv, mock_isfile):
+def test_get_transactions_csv_exception(mock_isfile, mock_read_csv):
     result = get_transactions_csv("dummy.csv")
     assert result == []
-    mock_isfile.assert_called_once_with("dummy.csv")
+    mock_isfile.assert_called_once_with("dummy.csv", sep=";")
     mock_read_csv.assert_called_once_with("dummy.csv")
 
 
@@ -43,7 +43,7 @@ def test_get_transactions_csv_with_mock_data(mock_read_csv, mock_isfile):
     assert result == [{"Id": 1, "Name": "Alex", "Amount": 20}, {"Id": 2, "Name": "Bill", "Amount": 30}]
 
     mock_isfile.assert_called_once_with("dummy.csv")
-    mock_read_csv.assert_called_once_with("dummy.csv")
+    mock_read_csv.assert_called_once_with("dummy.csv", sep=";")
     mock_df.to_dict.assert_called_once_with(orient="records")
 
 
