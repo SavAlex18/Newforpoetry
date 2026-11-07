@@ -114,7 +114,8 @@ def main():
         for item in filter_word_list:
             print(f'{get_date(item.get("date"))} {item.get("description")} \n{mask_account_card(item.get("from")).strip()}'
                   f'{" -> " if mask_account_card(item.get("from")) != "" else ""}'
-                  f' {mask_account_card(item.get("to")).strip()} \nСумма: {item.get("amount")} {item.get("currency_code")}')
+                  f'{mask_account_card(item.get("to")).strip()} \nСумма: {item.get("amount")} {item.get("currency_code")}')
+            print()
     else:
         print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 
