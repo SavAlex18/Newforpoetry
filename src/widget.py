@@ -8,7 +8,11 @@ def mask_account_card(info_client: str) -> str | None:
     Функция получает на входе строку с номером карты или счёта,
     возвращает замаскированный номер или счёт в зависимости от входного параметра
     """
-    info_card_account = info_client.split(" ")
+    try:
+        info_card_account = info_client.split(" ")
+    except Exception:
+        return ""
+
     if info_card_account[0].upper() in ["СЧЕТ", "СЧЁТ"]:
         mask_account = get_mask_account(info_card_account[-1])
         if mask_account:
