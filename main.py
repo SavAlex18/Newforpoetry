@@ -100,7 +100,7 @@ def main():
         need_filter_word = input("Отфильтровать список транзакций по определенному слову в описании? Да/Нет ")
 
     if need_filter_word.upper() == 'ДА':
-        filter_word = input("Введите слово для фильтрации транзакций")
+        filter_word = input("Введите слово для фильтрации транзакций ")
     else:
         filter_word = ""
 
@@ -112,8 +112,9 @@ def main():
     operation_found = len(filter_word_list)
     if operation_found > 0:
         for item in filter_word_list:
-            print(f'{get_date(item.get("date"))} {item.get("description")} \n{mask_account_card(item.get("from"))}'
-                  f'-> {mask_account_card(item.get("to"))} \nСумма: {item.get("amount")} {item.get("currency_code")}')
+            print(f'{get_date(item.get("date"))} {item.get("description")} \n{mask_account_card(item.get("from")).strip()}'
+                  f'{" -> " if mask_account_card(item.get("from")) != "" else ""}'
+                  f' {mask_account_card(item.get("to")).strip()} \nСумма: {item.get("amount")} {item.get("currency_code")}')
     else:
         print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 

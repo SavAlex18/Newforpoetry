@@ -14,7 +14,7 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
         return ret_list
     for item_dict in data:
         try:
-            if re.search(search, str(item_dict.get("description", ""))):
+            if re.search(search, str(item_dict.get("description", "")), re.IGNORECASE):
                 ret_list.append(item_dict)
         except Exception:
             continue
